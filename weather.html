@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <h1 class="w-head">Weather Updates</h1>
+    <div class="search">
+        <input type="text" id="search-bar" placeholder="Enter location">
+        <button onclick="searchWeather()">Search</button>
+    </div>
+    <div class="info">
+        <p id="displayText" class="fade-in"></p>
+        <p id="weatherInfo" class="fade-in"></p>
+        <p id="temp" class="fade-in"></p>
+        <p id="min" class="fade-in"></p>
+        <p id="max" class="fade-in"></p>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
