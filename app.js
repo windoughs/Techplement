@@ -19,10 +19,29 @@ function searchWeather() {
             const maxTemp = data.main.temp_max;
             const city = data.name;
             const country = data.sys.country;
-            document.getElementById("weatherInfo").innerText = `Weather in ${city}, ${country}: ${weather}`;
-            document.getElementById("temp").innerHTML = `Temperature Now : ${temp}°C , but feels like ${feelsLike}   `;
-            document.getElementById("min").innerText = `Minimum Temperature : ${minTemp}`;
-            document.getElementById("max").innerText = `Maximum Temperature : ${maxTemp}`;
+            let weatherIcon = '';
+            if (weather.includes('cloud')) {
+                weatherIcon = '<i class="fas fa-cloud"></i>';
+            } else if (weather.includes('sun') || weather.includes('clear')) {
+                weatherIcon = '<i class="fas fa-sun"></i>';
+            } else if (weather.includes('rain')) {
+                weatherIcon = '<i class="fas fa-cloud-rain"></i>';
+            } else if (weather.includes('snow')) {
+                weatherIcon = '<i class="fas fa-snowflake"></i>';
+            } else if (weather.includes('thunderstorm')) {
+                weatherIcon = '<i class="fas fa-bolt"></i>';
+            } else {
+                weatherIcon = '<i class="fas fa-cloud"></i>'; // default icon
+            }
+
+            document.getElementById("weatherInfo").innerHTML = `Weather in ${city}, ${country}: ${weatherIcon} ${weather}`;
+            document.getElementById("temp").innerHTML = `<i class="fas fa-thermometer-half"></i> ${temp}°C`;
+            document.getElementById("feels-like").innerHTML = `<i class="fas fa-temperature-low"></i> Feels like ${feelsLike}°C`;
+            document.getElementById("min").innerHTML = `<i class="fas fa-thermometer-quarter"></i> Min: ${minTemp}°C`;
+            document.getElementById("max").innerHTML = `<i class="fas fa-thermometer-full"></i> Max: ${maxTemp}°C`;
+            
+            const infoCard = document.querySelector('.info');
+            infoCard.classList.add('show-card');
         })
         .catch(error => {
             document.getElementById("weatherInfo").innerText = 'Error retrieving weather data';
